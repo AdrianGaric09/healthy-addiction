@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '../views/Home.vue';
+import Contact from '../components/Contact.vue';
 
 const routes = [
   {
@@ -7,6 +8,11 @@ const routes = [
     name: 'home',
     component: Home
   },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: Contact
+  }
 ]
 
 const router = createRouter({
@@ -14,4 +20,4 @@ const router = createRouter({
   routes
 })
 
-export default router
+export default router;

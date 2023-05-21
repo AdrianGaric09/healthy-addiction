@@ -4,20 +4,32 @@
         <nav :class="{ sticky: isSticky }">
             <a href="index.html"><img src="../assets/HA.png"></a>
             <div class="nav-links" id="navLinks">
-                <ul>
+                <ul class="linkovi">
                     <li><a href="">HOME</a></li>
                     <li><a href="">ABOUT</a></li>
-                    <li><a href="">CALORIE TRACKER</a></li>
+                    <li class="Calorie-calculator" @click="openCalorieTracker"><a href="">CALORIE CALCULATOR</a></li>
                     <li><a href="">WATER TRACKER</a></li>
-                    <li><a href="">CONTACT</a></li>
+                    <li><router-link to="/contact" @click="scrollToContact">CONTACT</router-link></li>
                     <li class="Login-popup" @click="openLoginPopup"><a href="#">LOGIN</a></li>
                     <li><a href="">PROFILE</a></li>
+                    <!--Izbornik jezika-->
+                    <li class="lang-dropdown" @click="toggleDropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <span> {{ selectedLang }}</span>
+                            <ion-icon name="language-outline"></ion-icon>
+                        </a>
+                        <ul class="dropdown-menu" v-show="isDropdownVisible">
+                            <li v-for="(lang, index) in languages" :key="index" @click="changeLanguage(lang)">
+                            <a :class="{active: lang === selectedLang}">{{ lang }}</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </nav>
 
         <div class="wrapper" :class="{ show: showLoginPopup }">
-            <span class="icon-close"><ion-icon name="close" ></ion-icon></span>
+            <span class="icon-close" @click="closeLoginPopup"><ion-icon name="close" ></ion-icon></span>
 
             <div class="form-box login">
                 <h2>Login</h2>
@@ -100,7 +112,7 @@ nav{
     right: 0;
     left: 0;
     top: 0;
-    transition: 1s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 nav.sticky{
@@ -112,20 +124,16 @@ nav.sticky{
     right: 0;
     left: 0;
     top: 0;
-    transition: 1s;
-    background-color: #ffffffd5;
+    transition: 0.5s;
+    background-color: #ffffffdb;
 }
 
 nav img{
     width: 150px;
-    transition: width 1s ease-in-out;
+    transition: width 0.5s ease-in-out;
 }
 nav.sticky img{
     width: 75px;
-}
-
-nav.sticky ul li a{
-    color: #000;
 }
 
 .nav-links{
@@ -140,17 +148,26 @@ nav.sticky ul li a{
     position: relative;
 }
 
+nav.sticky .nav-links ul li a{
+    color: #000;
+}
+
 .nav-links ul li a{
     color: #fff;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+nav.sticky .nav-links ul li::after{
+    background: #000000;
 }
 
 .nav-links ul li::after{
     content: '';
     width: 0%;
-    height: 2px;
-    background: #3646f4;
+    height: 3px;
+    background: #ffffff;
     display: block;
     margin: auto;
     transition: 0.5s;
@@ -168,10 +185,69 @@ nav.sticky ul li a{
     cursor: pointer;
     transition: 0.5s;
 }
+nav.sticky .nav-links .Login-popup {
+  border: 2px solid black;
+}
 
 .nav-links .Login-popup:hover{
-    background: #3646f4;
+    background: #2461FF;
 }
+nav.sticky .nav-links .Login-popup:hover{
+    background: #ffffffe0;
+}
+
+/*css za lang dropdown*/ 
+.lang-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  display: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: #000;
+  text-align: center;
+}
+.sticky .dropdown-menu,
+.sticky .dropdown-menu li,
+.sticky .dropdown-menu li:hover {
+  background-color: #fff;
+  color: #000;
+}
+.lang-dropdown:hover .dropdown-menu {
+  display: block; 
+}
+.dropdown-menu li {
+  padding: 5px 10px;
+}
+.dropdown-menu li:hover {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+.lang-dropdown a.active {
+  font-weight: bold;
+}
+.lang-dropdown .dropdown-menu li a {
+  color: black;
+}
+.dropdown-toggle ion-icon {
+  margin-left: 5px;
+}
+
 
 .wrapper{
     position: relative;
@@ -364,8 +440,8 @@ nav.sticky ul li a{
 }
 
 .hero-btn:hover{
-    border: 1px solid #3646f4;
-    background: #3646f4;
+    border: 1px solid #2461FF;
+    background: #2461FF;
 }
 </style>
 
@@ -373,7 +449,13 @@ nav.sticky ul li a{
 export default {
   data() {
     return {
-      isSticky: false
+      // Dostupni jezici
+      languages: ['English', 'Croatian'],
+      // Izabrani jezici
+      selectedLang: 'English',
+      isSticky: false,
+      isDropdownVisible: false,
+      isLoginPopupVisible: false,
     };
   },
   mounted() {
@@ -382,6 +464,8 @@ export default {
     const registerlink = document.querySelector('.register-link');
     const btnPopup = document.querySelector('.Login-popup');
     const iconClose = document.querySelector('.icon-close');
+    const langDropdown = document.querySelector('.lang-dropdown');
+    const dropdownMenu = langDropdown.querySelector('.dropdown-menu');
     
     registerlink.addEventListener('click', () => {
       wrapper.classList.add('active');
@@ -398,6 +482,13 @@ export default {
     iconClose.addEventListener('click', () => {
       wrapper.classList.remove('active-popup');
     });
+    langDropdown.addEventListener('mouseover', () => {
+    dropdownMenu.style.display = 'block';
+    });
+
+    langDropdown.addEventListener('mouseout', () => {
+    dropdownMenu.style.display = 'none';
+    });
     
     window.addEventListener("scroll", this.handleScroll);
   },
@@ -408,11 +499,36 @@ export default {
     handleScroll() {
       this.isSticky = window.scrollY > 0;
     },
+    changeLanguage(lang) {
+      this.selectedLang = lang;
+      this.isDropdownVisible = false;
+    },
+    toggleDropdown() {
+      this.isDropdownVisible = !this.isDropdownVisible;
+    },
     openLoginPopup() {
       const wrapper = document.querySelector('.wrapper');
       wrapper.classList.add('active-popup');
       window.scrollTo({ top: 0, behavior: "smooth"});
+
+      this.isLoginPopupVisible = true;
+
+      document.body.style.overflow = 'hidden';
+    },
+    closeLoginPopup() {
+      const wrapper = document.querySelector('.wrapper');
+      wrapper.classList.remove('active-popup');
+      
+      this.isLoginPopupVisible = false;
+
+      document.body.style.overflow = 'auto';
+    },
+    scrollToContact() {
+      const contactSection = document.getElementById('contact-form');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
     }
-  }
+}
 };
 </script>

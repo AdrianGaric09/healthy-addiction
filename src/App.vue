@@ -1,21 +1,31 @@
 <template>
   <div>
       <Header /> 
-      <Motivation /> 
+      <Motivation />
+      <Lifestyle />
+      <FAQ /> 
       <router-view />
+      <Footer />
   </div>
 </template>
 
 <script>
   import Header from "@/components/Header.vue";
   import Motivation from "@/components/Motivation.vue";
+  import Lifestyle from "@/components/Lifestyle.vue";
+  import FAQ from "@/components/FAQ.vue";
+  //import Contact from "@/components/Contact.vue";
+  import Footer from "@/components/Footer.vue";
 
 export default {
   name: "App",
   components: {
     Header,
-    Motivation
-    
+    Motivation,
+    Lifestyle,
+    FAQ,
+    //Contact,
+    Footer,
   },
 };
 </script>
