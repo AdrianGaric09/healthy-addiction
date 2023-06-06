@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
-import Contact from '../components/Contact.vue';
+import CalorieCalculator from '@/components/CalorieCalculator.vue';
 
 const routes = [
   {
@@ -9,9 +9,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/contact',
-    name: 'contact',
-    component: Contact
+    path: '/CalorieCalculator',
+    name: 'CalorieCalculator',
+    component: CalorieCalculator,
   }
 ]
 

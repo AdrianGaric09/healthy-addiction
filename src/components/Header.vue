@@ -2,14 +2,14 @@
     <div>
     <div class="header">
         <nav :class="{ sticky: isSticky }">
-            <a href="index.html"><img src="../assets/HA.png"></a>
+            <a href="/"><img src="../assets/HA.png" alt="Healthy Addiction"></a>
             <div class="nav-links" id="navLinks">
                 <ul class="linkovi">
-                    <li><a href="">HOME</a></li>
-                    <li><a href="">ABOUT</a></li>
-                    <li class="Calorie-calculator" @click="openCalorieTracker"><a href="">CALORIE CALCULATOR</a></li>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="#" @click.prevent="$emit('scrollToAbout')">ABOUT</a></li>
+                    <li><router-link to="/CalorieCalculator" @click.prevent="handleCalorieCalculatorClick">CALORIE CALCULATOR</router-link></li>
                     <li><a href="">WATER TRACKER</a></li>
-                    <li><router-link to="/contact" @click="scrollToContact">CONTACT</router-link></li>
+                    <li><a href="#" @click.prevent="$emit('scrollToContact')">CONTACT</a></li>
                     <li class="Login-popup" @click="openLoginPopup"><a href="#">LOGIN</a></li>
                     <li><a href="">PROFILE</a></li>
                     <!--Izbornik jezika-->
@@ -86,14 +86,13 @@
     </div>
 
         <div class="text-box">
-            <h1>Make Yourself Proud</h1>
-            <p>Do something today that your future self will thank you for</p>
-            <a href="" class="hero-btn">Click here to start</a>
+            <h1><span class="auto-type"></span></h1>
+            <a href="" class="hero-btn">CLICK FOR <strong>SUCCESS</strong></a>
         </div>
     </div>
 </template>
 
-<style>
+<style > 
 
 .header{
     min-height: 100vh;
@@ -126,6 +125,8 @@ nav.sticky{
     top: 0;
     transition: 0.5s;
     background-color: #ffffffdb;
+    border-bottom: 2px solid black;
+    z-index: 1;
 }
 
 nav img{
@@ -178,10 +179,10 @@ nav.sticky .nav-links ul li::after{
 }
 
 .nav-links .Login-popup{
-    width: 39px;
-    height: 30px;
+    width: 40px;
+    height: 25px;
     border: 2px solid #fff;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: 0.5s;
 }
@@ -408,7 +409,7 @@ nav.sticky .nav-links .Login-popup:hover{
 }
 
 .text-box{
-    width: 90%;
+    width: 100%;
     color: #fff;
     position: absolute;
     top: 50%;
@@ -418,21 +419,18 @@ nav.sticky .nav-links .Login-popup:hover{
 }
 
 .text-box h1{
-    font-size: 62px;
-}
-.text-box p{
-    margin: 10px 0 40px;
-    font-size: 14px;
-    color:#fff;
+    font-size: 80px;
+    padding: 150px;
+    
 }
 
 .hero-btn{
     display: inline-block;
     text-decoration: none;
     color: #fff;
-    border: 1px solid #fff;
-    padding: 12px 34px;
-    font-size: 13px;
+    border: 3px solid #fff;
+    padding: 20px 40px;
+    font-size: 18px;
     background: transparent;
     position: relative;
     cursor: pointer;
@@ -440,12 +438,15 @@ nav.sticky .nav-links .Login-popup:hover{
 }
 
 .hero-btn:hover{
-    border: 1px solid #2461FF;
+    border: 3px solid #ffffff;
     background: #2461FF;
 }
 </style>
 
 <script>
+
+import Typed from 'typed.js';
+
 export default {
   data() {
     return {
@@ -466,7 +467,8 @@ export default {
     const iconClose = document.querySelector('.icon-close');
     const langDropdown = document.querySelector('.lang-dropdown');
     const dropdownMenu = langDropdown.querySelector('.dropdown-menu');
-    
+    this.initTyped();
+  
     registerlink.addEventListener('click', () => {
       wrapper.classList.add('active');
     });
@@ -522,13 +524,26 @@ export default {
       this.isLoginPopupVisible = false;
 
       document.body.style.overflow = 'auto';
+    }, 
+    initTyped() {
+      new Typed(".auto-type", {
+        strings: ["Dream, Believe, Achieve", "Embrace the Journey", "Make Yourself Proud", "Strive for Greatness", "Unleash Your Potential", "Inspire, Empower, Succeed", "Find Your Purpose", "Rise, Conquer, Repeat", "Create Your Legacy", "Dream Big, Hustle Hard" ],
+        typeSpeed: 90,
+        backSpeed: 70,
+        smartBackspace: true,
+        backDelay: 2000,
+        loop: true,
+
+      });
+    },  
+    toggleTheDropdown() {
+      // Emits an event to the parent component to toggle the dropdown
+      this.$emit('dropdown');
     },
-    scrollToContact() {
-      const contactSection = document.getElementById('contact-form');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-}
+    handleCalorieCalculatorClick() {
+      this.$emit('scrollToCalorieCalculator');
+      this.$emit('dropdown');
+    },
+},
 };
 </script>
