@@ -1,14 +1,16 @@
 <template>
-<div class="footer">
-    <h3>About Us</h3>
-    <p>We are a nonprofit organization that has a goal to show<br> how
-    anyone can unlock their true potential with the right mindset </p>
-    <div class="icons">
-        <i class="fa fa-facebook"></i>
-        <i class="fa fa-instagram"></i>
-        <i class="fa fa-linkedin"></i>
+    <div id="about-section">
+        <div class="footer">
+            <h3>About Us</h3>
+            <p>We are a nonprofit organization that has a goal to show<br>
+            how anyone can unlock their true potential with the right mindset<br><br>Thanks for visiting us! </p>
+            <div class="icons">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-linkedin"></i>
+            </div>
+        </div>
     </div>
-</div>
 </template>
 
 <style>
