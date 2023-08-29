@@ -21,10 +21,10 @@
 
     <div class="Find-out">
         <h1>FIND OUT FOR YOURSELF</h1>
-    </div>
 
-    <div class="Click-here">
-        <h2>CLICK<span class="arrow-container"><ion-icon name="arrow-forward-outline" class="arrow-icon"></ion-icon></span><a href="/"><strong>HERE</strong></a></h2>
+        <div class="Click-here">
+            <h2><span class="click">CLICK</span><span class="arrow-container"><ion-icon name="arrow-forward-outline" class="arrow-icon"></ion-icon></span><a href="/"><strong>HERE</strong></a></h2>
+        </div>
     </div>
 
     </div>
@@ -47,7 +47,7 @@
     font-weight: 300;
     line-height: 22 px;
     padding: 10px;
-     margin: 0 0 150px 0;
+    margin: 0 0 150px 0;
 }
 .FAQ-col{
     flex-basis: 31%;
@@ -63,8 +63,18 @@
 .Find-out h1{
     font-size: 60px;
     padding-bottom: 50px;
-    text-decoration-line: underline;
-}  
+    text-decoration-line:overline;
+}
+
+.Find-out{
+    background-image: url("../assets/FOFY.jpg");
+    background-size: 148%;
+    padding: 35px;
+}
+.click{
+    font-size: 30px;
+}
+      
 .Click-here{
     display: flex;
     align-items: center;
@@ -78,13 +88,17 @@
     transition: 0.5s;
     color: #000000;
     padding: 10px;
-    font-size: 30px;
+    font-size: 35px;
+    background-color: white;
 }
-.Click-here a::after{
-    color: rgb(38, 0, 255);
+.Click-here a:hover{
+    color: rgb(0, 132, 255);
+    border: 4px solid rgb(0, 132, 255);
 }
 .arrow-icon{
     font-size: 30px;
+    color: #000000;
+    background-color: white;
 }
 .arrow-container {
   margin: 0 20px;

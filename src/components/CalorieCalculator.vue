@@ -74,7 +74,7 @@
      </div>
 </template>
 
-<style>
+<style scoped>
   .dropdown {
     position: relative;
     display: flex;
@@ -307,11 +307,15 @@ export default {
         this.heightErrorMessage = "";
       }
     },
-    clearForm() {
+    resetForm() {
       this.age = null;
       this.gender = "male";
       this.weight = null;
+      this.weightError = false;
+      this.weightErrorMessage = "";
       this.height = null;
+      this.heightError = false;
+      this.heightErrorMessage = "";
       this.activityLevel = "1";
       this.ageError = false;
       this.ageErrorMessage = "";

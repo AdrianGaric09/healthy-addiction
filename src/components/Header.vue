@@ -11,7 +11,6 @@
                     <li><a href="">WATER TRACKER</a></li>
                     <li><a href="#" @click.prevent="$emit('scrollToContact')">CONTACT</a></li>
                     <li class="Login-popup" @click="openLoginPopup"><a href="#">LOGIN</a></li>
-                    <li><a href="">PROFILE</a></li>
                     <!--Izbornik jezika-->
                     <li class="lang-dropdown" @click="toggleDropdown">
                         <a href="#" class="dropdown-toggle">
@@ -87,7 +86,9 @@
 
         <div class="text-box">
             <h1><span class="auto-type"></span></h1>
-            <a href="" class="hero-btn">CLICK FOR <strong>SUCCESS</strong></a>
+            <router-link to="/EmojiPage" class="hero-btn" @click.prevent="showEmojiPage">
+                CLICK FOR <strong>SUCCESS</strong>
+            </router-link>       
         </div>
     </div>
 </template>
@@ -448,6 +449,7 @@ nav.sticky .nav-links .Login-popup:hover{
 import Typed from 'typed.js';
 
 export default {
+    name: 'Header', 
   data() {
     return {
       // Dostupni jezici
@@ -544,6 +546,9 @@ export default {
       this.$emit('scrollToCalorieCalculator');
       this.$emit('dropdown');
     },
+    showEmojiPage() {
+      this.$emit('scrollToEmojiPage');
+    },
 },
-};
+  };
 </script>
