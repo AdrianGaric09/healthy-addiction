@@ -4,18 +4,24 @@
         <div class="rating">
             <input type="radio" name="emoji" id="sad">
             <label for="sad">
-                <img class="t" src="../assets/sad.png"> 
-                <h4 class="tuzno">Sad</h4>
+                <img class="t" src="../assets/sad.png">
+                    <router-link to="/Sad" @click="showSad" class="underline">
+                        <h4 class="tuzno">Sad</h4>
+                    </router-link>
             </label>
             <input type="radio" name="emoji" id="neutral">
             <label for="neutral">
                 <img class="n" src="../assets/neutral.png"> 
-                <h4 class="neutralno">Neutral</h4>
+                    <router-link to="/Neutral" @click="showNeutral" class="underline">
+                        <h4 class="neutralno">Neutral</h4>
+                    </router-link>
             </label>
             <input type="radio" name="emoji" id="happy">
             <label for="happy">
-                <img class="s" src="../assets/happy.png"> 
-                <h4 class="sretno">Happy</h4>
+                <img class="s" src="../assets/happy.png">
+                    <router-link to="/Happy" @click="showHappy" class="underline">
+                        <h4 class="sretno">Happy</h4>
+                    </router-link>
             </label>
             <h2 class="tekst">What mood are you currently in?</h2>
         </div>
@@ -27,10 +33,21 @@
 
 export default {
     name: 'EmojiPage',
+    methods: {
+        showSad() {
+            this.$emit('scrollToSad');
+        },
+        showNeutral() {
+            this.$emit('scrollToNeutral');
+        },
+        showHappy() {
+            this.$emit('scrollToHappy');
+        },
+    }
 };
 </script>
 
-<style>
+<style scoped>
     #emoji-page{
         margin: 0;
         padding: 0;
@@ -54,19 +71,19 @@ export default {
         transition: transform 0.5s;
     }
     .s:hover{
-        transform: translateY(-10px);
+        transform: translateY(-30px);
     }
     .t{
         transition: transform 0.5s;
     }
     .t:hover{
-        transform: translateY(-10px);
+        transform: translateY(-30px);
     }
     .n{
         transition: transform 0.5s;
     }
     .n:hover{
-        transform: translateY(-10px);
+        transform: translateY(-30px);
     }
     .rating input{
         display: none;
@@ -105,6 +122,9 @@ export default {
         font-size: 20px;
         border-radius: 30px;
         transition: 1s;
+    }
+    .underline {
+        text-decoration: none; /* Makne default underline*/
     }
     .tekst{
         position: absolute;
