@@ -1,0 +1,51 @@
+{
+    "header": {
+        "home": "HOME",
+        "about": "ABOUT",
+        "calorie-calculator": "CALORIE CALCULATOR",
+        "water-tracker": "WATER TRACKER",
+        "contact": "CONTACT",
+        "login": "LOGIN",
+        "click-for": "CLICK FOR",
+        "success": "SUCCESS",
+        "string1": "Dream, Believe, Achieve",
+        "string2": "Embrace the Journey",
+        "string3": "Make Yourself Proud",
+        "string4": "Strive for Greatness",
+        "string5": "Unleash Your Potential", 
+        "string6": "Inspire, Empower, Succeed",
+        "string7": "Find Your Purpose",
+        "string8": "Rise, Conquer, Repeat", 
+        "string9": "Create Your Legacy",
+        "string10": "Dream Big, Hustle Hard"
+      },
+      "wt": {
+        "water-tracker": "WATER TRACKER"
+      },
+      "cc": {
+        "calorie-calculator": "CALORIE CALCULATOR",
+        "age": "AGE",
+        "enter-age": "Enter your age (15-80)"
+      },
+      "motivation": {
+        "believe": "YOU MUST BELIEVE IN YOURSELF",
+        "remember": "Remember, if anyone can do it, so can you",
+        "determination": "Determination",
+        "optimism": "Optimism",
+        "self-discipline": "Self-discipline",
+        "leonardo-p1": "It had long since come to my attention that people of accomplishment rarely sat back and let things happen to them.",
+        "leonardo-p2": "They went out and happened to things.",
+        "einstein-p1": "There are only two ways to live your life.",
+        "einstein-p2": "One is as though nothing is a miracle.",
+        "einstein-p3": "The other is as though everything is a miracle.",
+        "tesla-p1": "I could only achieve success in my life through self-discipline ",
+        "tesla-p2": "and I applied it until my wish and my will became one. "
+      },
+      "lifestyle": {
+        "improve": "IMPROVE YOUR LIFESTYLE",
+        "support": "We are here to support your way into building a better version of you",
+        "food": "HEALTHY DIET",
+        "training": "TRAINING",
+        "end": "END GOAL"
+      }
+}

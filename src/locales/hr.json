@@ -1,0 +1,51 @@
+{
+    "header": {
+        "home": "POČETNA",
+        "about": "O NAMA",
+        "calorie-calculator": "KALKULATOR KALORIJA",
+        "water-tracker": "UNOS TEKUĆINE",
+        "contact": "KONTAKT",
+        "login": "LOGIN",
+        "click-for": "KLIKNI ZA",
+        "success": "USPJEH",
+        "string1": "Sanjaj, Vjeruj, Ostvari",
+        "string2": "Prigrli Putovanje",
+        "string3": "Učini Sebe Ponosnim",
+        "string4": "Teži Veličini",
+        "string5": "Oslobodi svoj potencijal",
+        "string6": "Inspiriraj, Ojačaj, Uspij",
+        "string7": "Pronađi Svoju Svrhu",
+        "string8": "Izdigni Se, Osvoji, Ponovi",
+        "string9": "Stvori Svoju Ostavštinu",
+        "string10": "Sanjaj Veliko, Radi Naporno"
+      },
+      "wt": {
+        "water-tracker":"UNOS TEKUĆINE"
+      },
+      "cc": {
+        "calorie-calculator":"KALKULATOR KALORIJA",
+        "age":"DOB",
+        "enter-age":"Unesite svoje godine (15-80)"
+      },
+      "motivation": {
+        "believe":"MORAŠ VJEROVATI U SEBE",
+        "remember":"Zapamti, ako bilo tko to može, možeš to i ti",
+        "determination":"Odlučnost",
+        "optimism":"Optimizam",
+        "self-discipline": "Samodisciplina",
+        "leonardo-p1": "Odavno sam primijetio da uspješni ljudi rijetko sjede i dopuštaju da im se stvari dogode.",
+        "leonardo-p2": "Oni su izašli i dogodili se stvarima.",
+        "einstein-p1": "Postoje samo dva načina da živite svoj život.",
+        "einstein-p2": "Jedan je kao da ništa nije čudo.",
+        "einstein-p3": "Drugi je kao da sve je čudo.",
+        "tesla-p1": "Uspjeh u životu mogao sam postići samo samodisciplinom ",
+        "tesla-p2": "i primjenjivao sam je sve dok se moja želja i volja nisu spojile. "
+      },
+      "lifestyle": {
+        "improve": "POBOLJŠAJ SVOJ NAČIN ŽIVOTA",
+        "support": "Ovdje smo da podržimo tvoj put u izgradnji bolje verzije tebe",
+        "food": "ZDRAVA PREHRANA",
+        "training": "TRENING",
+        "end": "KRAJNJI CILJ"
+      }
+}
