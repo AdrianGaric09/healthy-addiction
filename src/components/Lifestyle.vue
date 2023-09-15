@@ -1,25 +1,25 @@
 <template>
     <div class="Lifestyle">
-        <h1>IMPROVE YOUR LIFESTYLE</h1>
-        <p>We are here to support your way into building a better version of you</p>
+        <h1>{{ $t('lifestyle.improve') }}</h1>
+        <p>{{ $t('lifestyle.support') }}</p>
 
         <div class="row">
             <div class="Lifestyle-col">
-                <img src="../assets/food.webp">
+                <img src="../assets/healthy.jpg">
                 <div class="layer">
-                    <h3 >HEALTHY FOOD</h3>
+                    <h3 >{{ $t('lifestyle.food') }}</h3>
                 </div>
             </div>
             <div class="Lifestyle-col">
-                <img src="../assets/lifting.jpeg">
+                <img src="../assets/training.jpg">
                 <div class="layer">
-                    <h3 >TRAINING</h3>
+                    <h3 >{{ $t('lifestyle.training') }}</h3>
                 </div>
             </div>
             <div class="Lifestyle-col">
-                <img src="../assets/success.jpeg">
+                <img src="../assets/endgoal.jpg">
                 <div class="layer">
-                    <h3 >END GOAL</h3>
+                    <h3 >{{ $t('lifestyle.end') }}</h3>
                 </div>
             </div>
         </div>
@@ -34,12 +34,12 @@
         padding-top: 50px;
     }
     .Lifestyle h1{
-        font-size: 50px;
+        font-size: 70px;
         font-weight: 600;
 }
     .Lifestyle p{
         color: #777;
-        font-size: 20px;
+        font-size: 25px;
         font-weight: 300;
         line-height: 22 px;
         padding: 10px;

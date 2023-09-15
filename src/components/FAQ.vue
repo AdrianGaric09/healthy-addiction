@@ -30,7 +30,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .FAQ{
     width: 80%;
     margin: auto;
@@ -38,12 +38,12 @@
     padding-top: 100px;
 }
 .FAQ h1{
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 600;
 }
 .FAQ p{
     color: #777;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 300;
     line-height: 22 px;
     padding: 10px;
@@ -52,13 +52,17 @@
 .FAQ-col{
     flex-basis: 31%;
     border-radius: 10px;
-    margin-bottom: 10%;
+    margin-bottom: 100px;
     text-align: center;
 }
 .FAQ-col img{
     width: 100%;
     height: 85%;
     border-radius: 10px;
+}
+.FAQ-col .FAQ-title{
+    font-size: 30px;
+    margin-top: 10px;
 }
 .Find-out h1{
     font-size: 60px;

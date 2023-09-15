@@ -1,7 +1,7 @@
 <template>
     <div id="about-section">
         <div class="footer">
-            <h3>About Us</h3>
+            <h2>About Us</h2>
             <p>We are a nonprofit organization that has a goal to show<br>
             how anyone can unlock their true potential with the right mindset<br><br>Thanks for visiting us! </p>
             <div class="icons">
@@ -19,14 +19,14 @@
     text-align: center;
     padding: 30px 0;
 }
-.footer h3{
+.footer h2{
     margin-bottom: 15px;
     margin-top: 20px;
     font-weight: 800;
 }
 .footer p{
     color: #777;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 300;
     padding: 15px;
 }

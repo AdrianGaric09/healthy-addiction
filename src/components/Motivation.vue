@@ -1,24 +1,25 @@
 <template>
     <div class="Motivation">
-    <h1>YOU MUST BELIEVE IN YOURSELF</h1>
-    <p class="Motivation-subtext">Remember, if anyone can do it, you can do it too</p>
+    <h1>{{ $t('motivation.believe') }}</h1>
+    <p class="Motivation-subtext">{{ $t('motivation.remember') }}</p>
 
     <div class="row">
         <div class="Motivation-col">
-            <h3>Determination</h3>
-            <p class="Motivacija">“It had long since come to my attention that people of accomplishment rarely sat back and let things happen to them.
-                <br>They went out and happened to things.”
+            <h3>{{ $t('motivation.determination') }}</h3>
+            <p class="Motivacija">"{{ $t('motivation.leonardo-p1') }}
+                <br>{{ $t('motivation.leonardo-p2') }}"
                 <br><br>- Leonardo da Vinci </p>
         </div>
         <div class="Motivation-col">
-            <h3>Optimism</h3>
-            <p class="Motivacija">"There are only two ways to live your life.<br> 
-               One is as though nothing is a miracle.<br> The other is as though <br> everything is a miracle." <br><br> - Albert Einstein</p>
+            <h3>{{ $t('motivation.optimism') }}</h3>
+            <p class="Motivacija">"{{ $t('motivation.einstein-p1') }}<br> 
+                {{ $t('motivation.einstein-p2') }}<br> {{ $t('motivation.einstein-p3') }} " 
+               <br><br> - Albert Einstein</p>
         </div>
         <div class="Motivation-col">
-            <h3>Self-discipline</h3>
-            <p class="Motivacija">“I could only achieve success in my life through self-discipline,<br> 
-                and I applied it until my wish and my will became one.” <br><br> - Nikola Tesla</p>
+            <h3>{{ $t('motivation.self-discipline') }}</h3>
+            <p class="Motivacija">“{{ $t('motivation.tesla-p1') }}<br> 
+                {{ $t('motivation.tesla-p2') }}” <br><br> - Nikola Tesla</p>
         </div>
     </div>
 </div>
@@ -28,19 +29,19 @@
 <style> 
 
 .Motivation{
-    width: 80%;
+    width: 85%;
     margin: auto;
     text-align: center;
-    padding: 150px 0 100px 0;
+    padding: 100px 0 100px 0;
 }
 
 .Motivation h1{
-    font-size: 50px;
+    font-size: 70px;
     font-weight: 600;
 }
 .Motivation-subtext{
     color: #777;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 300;
     line-height: 22 px;
     padding: 10px;
@@ -83,5 +84,16 @@
 
 .Motivation-col:hover{
     box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+
+@media(max-width: 700px){
+    .row{
+        flex-direction: column;
+    }
+
+    .Motivation h1{
+        font-size: 50px;
+        font-weight: 600;
+    }
 }
 </style>

@@ -1,15 +1,15 @@
 <template>
-      <div class="dropdown" v-show="showTheDropdown">
+      <div class="dropdown">
         <div class="card">
           <span class="icon-close" @click.prevent="closeDropdown">
             <ion-icon name="close" ></ion-icon>
           </span>
-          <h1 class="heading">CALORIE CALCULATOR</h1>
+          <h1 class="heading">{{ $t('cc.calorie-calculator') }}</h1>
           <form id="calorie-form" @submit.prevent="calculateCalories">
 
             <div class="form-group">
-              <label for="age">AGE:</label>
-              <input type="number" required class="form-control" id="age" placeholder="Enter your age (15-80)" v-model="age">
+              <label for="age">{{ $t('cc.age') }}:</label>
+              <input type="number" required class="form-control" id="age" :placeholder="$t('cc.enter-age')" v-model="age">
               <div class="error-message" v-show="ageError">{{ ageErrorMessage }}</div>
             </div>
 
@@ -24,10 +24,6 @@
                   <input type="radio" id="female" name="gender" class="custom-control-input" v-model="gender">
                   <label class="custom-control-label" for="female">FEMALE</label>
                 </div>
-                <div class="custom-control custom-radio">
-                  <input type="radio" id="other" name="gender" class="custom-control-input" disabled>
-                  <label class="custom-control-label" for="other">OTHER</label>
-                </div>
               </div>  
             </div> 
 
@@ -38,10 +34,11 @@
             </div>
 
             <div class="form-group">
-          <label for="height">HEIGHT (CM):</label>
-          <input type="number" required class="form-control" id="height" placeholder="Enter your height in centimeters" v-model="height" :min="50" :max="250" @input="validateHeight">
-          <div class="error-message" v-show="heightError">{{ heightErrorMessage }}</div>
-        </div>
+              <label for="height">HEIGHT (CM):</label>
+              <input type="number" required class="form-control" id="height" placeholder="Enter your height in centimeters" v-model="height" :min="50" :max="250" @input="validateHeight">
+              <div class="error-message" v-show="heightError">{{ heightErrorMessage }}
+              </div>
+            </div>
             
             <div class="form-group">
               <label for="activity-level">ACTIVITY LEVEL:</label>
@@ -141,7 +138,7 @@
 
   .gender-options {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding-top: 20px;
 }
   
@@ -169,8 +166,8 @@
   }
 
   #loading img {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
   }
 
   #results {

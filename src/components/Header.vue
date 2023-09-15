@@ -1,101 +1,235 @@
 <template>
-    <div>
-    <div class="header">
-        <nav :class="{ sticky: isSticky }">
-            <a href="/"><img src="../assets/HA.png" alt="Healthy Addiction"></a>
-            <div class="nav-links" id="navLinks">
-                <ul class="linkovi">
-                    <li><a href="/">HOME</a></li>
-                    <li><a href="#" @click.prevent="$emit('scrollToAbout')">ABOUT</a></li>
-                    <li><router-link to="/CalorieCalculator" @click.prevent="handleCalorieCalculatorClick">CALORIE CALCULATOR</router-link></li>
-                    <li><a href="">WATER TRACKER</a></li>
-                    <li><a href="#" @click.prevent="$emit('scrollToContact')">CONTACT</a></li>
-                    <li class="Login-popup" @click="openLoginPopup"><a href="#">LOGIN</a></li>
-                    <!--Izbornik jezika-->
-                    <li class="lang-dropdown" @click="toggleDropdown">
-                        <a href="#" class="dropdown-toggle">
-                            <span> {{ selectedLang }}</span>
-                            <ion-icon name="language-outline"></ion-icon>
-                        </a>
-                        <ul class="dropdown-menu" v-show="isDropdownVisible">
-                            <li v-for="(lang, index) in languages" :key="index" @click="changeLanguage(lang)">
-                            <a :class="{active: lang === selectedLang}">{{ lang }}</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+  
+  <div id="header">
+      <nav :class="{ sticky: isSticky }">
+        <a href="/"><img src="../assets/HA.png" alt="Healthy Addiction"></a>
+          <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" @click="HideMenu()"></i>
+              <ul class="linkovi">
+                <li><a href="/">{{ $t('header.home') }}</a></li>
+                <li><a href="#" @click.prevent="$emit('scrollToAbout')">{{ $t('header.about') }}</a></li>
+                <li><router-link to="/CalorieCalculator" @click.prevent="handleCalorieCalculatorClick">{{ $t('header.calorie-calculator') }}</router-link></li>
+                <li><router-link to="/WaterTracker" @click.prevent="handleWaterTrackerClick">{{ $t('header.water-tracker') }}</router-link></li>
+                <li><a href="#" @click.prevent="$emit('scrollToContact')">{{ $t('header.contact') }}</a></li>
+                <li class="Login-popup" @click="openLoginPopup"><a href="#">{{ $t('header.login') }}</a></li>
+                <!--Izbornik jezika-->
+                <li class="locale-changer">
+                  <select v-model="$i18n.locale" class="custom-select">
+                    <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">{{ locale }}</option>
+                  </select>
+                    <ion-icon class="jezik" name="language-outline"></ion-icon>
+                </li>
+              </ul>
+          </div>
+          <i class="fa fa-bars" @click="ShowMenu()"></i>
+      </nav>
 
-        <div class="wrapper" :class="{ show: showLoginPopup }">
-            <span class="icon-close" @click="closeLoginPopup"><ion-icon name="close" ></ion-icon></span>
+      <div class="wrapper" :class="{ show: showLoginPopup }">
+        <span class="icon-close" @click="closeLoginPopup"><ion-icon name="close" ></ion-icon></span>
 
-            <div class="form-box login">
-                <h2>Login</h2>
-                <form action="#">
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="mail" ></ion-icon></span>
-                        <input type="email" required>
-                        <label>Email</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="lock-closed" ></ion-icon></span>
-                        <input type="password" required>
-                        <label>Password</label>
-                    </div>
-                    <div class="remember-me">
-                        <label><input type="checkbox">Remember Me</label>
-                        <a href="#">Forgot password?</a>
-                    </div>
-                    <button type="submit" class="btn" @click="login">Login</button>
-                    <div class="login-register">
-                        <p>Don't have an account? <a href="#" class="register-link" @click="register">Register</a></p>
-                    </div>
-                </form>
-            </div>
+          <div class="form-box login">
+              <h2>Login</h2>
+              <form action="#">
+                  <div class="input-box">
+                      <span class="icon"><ion-icon name="mail" ></ion-icon></span>
+                      <input type="email" >
+                      <label>Email</label>
+                  </div>
+                  <div class="input-box">
+                      <span class="icon"><ion-icon name="lock-closed" ></ion-icon></span>
+                      <input type="password">
+                             
+                      <label>Password</label>
+                  </div>
+                  <div class="remember-me">
+                      <label><input type="checkbox">Remember Me</label>
+                      <a href="#">Forgot password?</a>
+                  </div>
+                  <button type="submit" class="btn" @click.prevent="login">Login</button>
+                  <div class="login-register">
+                      <p>Don't have an account? <a href="#" class="register-link" @click="register">Register</a></p>
+                  </div>
+              </form>
+          </div>
 
-            <div class="form-box register">
-                <h2>Registration</h2>
-                <form action="#">
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="person" ></ion-icon></span>
-                        <input type="text" required id="username">
-                        <label>Username</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="mail" ></ion-icon></span>
-                        <input type="email" required id="email">
-                        <label>Email</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="lock-closed" ></ion-icon></span>
-                        <input type="password" required id="password">
-                        <label>Password</label>
-                    </div>
-                    <div class="remember-me">
-                        <label><input type="checkbox">I agree to the terms & conditions</label>
-                    </div>
-                    <button type="submit" class="btn register-btn" @click="register">Register</button>
-                    <div class="login-register">
-                        <p>Already have an account? <a href="#" class="login-link">Login</a></p>
-                    </div>
-                </form>    
+          <div class="form-box register">
+            <h2>Registration</h2>
+              <form action="#">
+                  <div class="input-box">
+                      <span class="icon"><ion-icon name="mail" ></ion-icon></span>
+                      <input type="email" >
+                             
+                      <label>Email</label>
+                  </div>
+                  <div class="input-box">
+                      <span class="icon"><ion-icon name="lock-closed" ></ion-icon></span>
+                      <input type="password" >
+                             
+                      <label>Password</label>
+                  </div>
+                  <button type="submit" class="btn register-btn" @click.prevent="register">Register</button>
+                  <div class="login-register">
+                      <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                  </div>
+              </form>    
             </div>
         </div>
     </div>
 
-        <div class="text-box">
-            <h1><span class="auto-type"></span></h1>
-            <router-link to="/EmojiPage" class="hero-btn" @click.prevent="showEmojiPage">
-                CLICK FOR <strong>SUCCESS</strong>
-            </router-link>       
-        </div>
+    <div class="text-box">
+        <h1><span class="auto-type"></span></h1>
+        <router-link to="/EmojiPage" class="hero-btn" @click.prevent="showEmojiPage">
+            {{ $t('header.click-for') }} <strong>{{ $t('header.success') }}</strong>
+        </router-link>       
     </div>
+    
 </template>
 
-<style > 
+<script>
 
-.header{
+import Typed from 'typed.js';
+
+export default {
+  
+    name: 'Header', 
+    
+    data() {
+      return {
+        isSticky: false,
+        isLoginPopupVisible: false,
+      };
+    },
+  
+    
+  mounted() {
+    const wrapper = document.querySelector('.wrapper');
+    const loginlink = document.querySelector('.login-link');
+    const registerlink = document.querySelector('.register-link');
+    const btnPopup = document.querySelector('.Login-popup');
+    const iconClose = document.querySelector('.icon-close');
+    
+    this.initTyped(); 
+  
+    registerlink.addEventListener('click', () => {
+      wrapper.classList.add('active');
+    });
+    
+    loginlink.addEventListener('click', () => {
+      wrapper.classList.remove('active');
+    });
+    
+    btnPopup.addEventListener('click', () => {
+      wrapper.classList.add('active-popup');
+    });
+    
+    iconClose.addEventListener('click', () => {
+      wrapper.classList.remove('active-popup');
+    });
+    
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  watch: {
+    '$i18n.locale': 'initTyped'
+  },
+  methods: {
+
+    ShowMenu() {
+    const navLinks = document.getElementById("navLinks");
+    navLinks.style.right = "0";
+    },
+    HideMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.style.right = "-200px";
+    },
+    handleScroll() {
+      this.isSticky = window.scrollY > 0;
+    },
+    openLoginPopup() {
+      const wrapper = document.querySelector('.wrapper');
+      wrapper.classList.add('active-popup');
+      window.scrollTo({ top: 0, behavior: "smooth"});
+
+      this.isLoginPopupVisible = true;
+
+      document.body.style.overflow = 'hidden';
+    },
+    closeLoginPopup() {
+      const wrapper = document.querySelector('.wrapper');
+      wrapper.classList.remove('active-popup');
+      
+      this.isLoginPopupVisible = false;
+
+      document.body.style.overflow = 'auto';
+    },  
+    initTyped() {
+      if (this.typedInstance) {
+        this.typedInstance.destroy(); // Destroy existing Typed instance if it exists
+      }
+
+      this.typedInstance = new Typed(".auto-type", {
+        strings: [
+          this.$t('header.string1'),
+          this.$t('header.string2'),
+          this.$t('header.string3'),
+          this.$t('header.string4'),
+          this.$t('header.string5'),
+          this.$t('header.string6'),
+          this.$t('header.string7'),
+          this.$t('header.string8'),
+          this.$t('header.string9'),
+          this.$t('header.string10')
+        ],
+        typeSpeed: 90,
+        backSpeed: 70,
+        smartBackspace: true,
+        backDelay: 2000,
+        loop: true,
+      });
+    },
+    
+    handleCalorieCalculatorClick() {
+      this.$emit('scrollToCalorieCalculator');
+      this.$emit('dropdown');
+    },
+    handleWaterTrackerClick(){
+      this.$emit('scrollToWaterTracker');
+    },
+    showEmojiPage() {
+      this.$emit('scrollToEmojiPage');
+    },
+},
+  };
+</script>
+
+<style> 
+
+.locale-changer  {
+  color: white;
+}
+.locale-changer select {
+  color: white;
+}
+.locale-changer .jezik{
+  padding-left: 2px;
+}
+nav.sticky .locale-changer,
+nav.sticky .locale-changer select {
+ color: black;
+}
+.custom-select {
+  background-color: transparent;
+  border: none;
+}
+.custom-select option {
+  color: black; 
+  background-color: transparent;
+  border: none;
+}
+
+#header{
     min-height: 100vh;
     width: 100%;
     background-image:linear-gradient(rgba(6, 20, 74, 0.4),rgba(6, 23, 89, 0.4)), url(../assets/blue.jpeg) ;
@@ -197,60 +331,6 @@ nav.sticky .nav-links .Login-popup {
 nav.sticky .nav-links .Login-popup:hover{
     background: #ffffffe0;
 }
-
-/*css za lang dropdown*/ 
-.lang-dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1;
-  display: none;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  color: #000;
-  text-align: center;
-}
-.sticky .dropdown-menu,
-.sticky .dropdown-menu li,
-.sticky .dropdown-menu li:hover {
-  background-color: #fff;
-  color: #000;
-}
-.lang-dropdown:hover .dropdown-menu {
-  display: block; 
-}
-.dropdown-menu li {
-  padding: 5px 10px;
-}
-.dropdown-menu li:hover {
-  background-color: #ffffff;
-  cursor: pointer;
-}
-.lang-dropdown a.active {
-  font-weight: bold;
-}
-.lang-dropdown .dropdown-menu li a {
-  color: black;
-}
-.dropdown-toggle ion-icon {
-  margin-left: 5px;
-}
-
-
 .wrapper{
     position: relative;
     width: 480px;
@@ -442,113 +522,38 @@ nav.sticky .nav-links .Login-popup:hover{
     border: 3px solid #ffffff;
     background: #2461FF;
 }
+
+nav .fa{
+    display: none;
+}
+
+@media(max-width: 700px){
+    .text-box h1{
+        font-size: 30px;
+    }
+    .nav-links ul li{
+        display: block;
+    }
+    .nav-links{
+        position: absolute;
+        background: #3646f4;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: 0;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+    }
+    nav .fa{
+        display: block;
+        color:#fff;
+        margin: 10px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+    .nav-links ul{
+        padding: 30px;
+    }
+}
 </style>
-
-<script>
-
-import Typed from 'typed.js';
-
-export default {
-    name: 'Header', 
-  data() {
-    return {
-      // Dostupni jezici
-      languages: ['English', 'Croatian'],
-      // Izabrani jezici
-      selectedLang: 'English',
-      isSticky: false,
-      isDropdownVisible: false,
-      isLoginPopupVisible: false,
-    };
-  },
-  mounted() {
-    const wrapper = document.querySelector('.wrapper');
-    const loginlink = document.querySelector('.login-link');
-    const registerlink = document.querySelector('.register-link');
-    const btnPopup = document.querySelector('.Login-popup');
-    const iconClose = document.querySelector('.icon-close');
-    const langDropdown = document.querySelector('.lang-dropdown');
-    const dropdownMenu = langDropdown.querySelector('.dropdown-menu');
-    this.initTyped();
-  
-    registerlink.addEventListener('click', () => {
-      wrapper.classList.add('active');
-    });
-    
-    loginlink.addEventListener('click', () => {
-      wrapper.classList.remove('active');
-    });
-    
-    btnPopup.addEventListener('click', () => {
-      wrapper.classList.add('active-popup');
-    });
-    
-    iconClose.addEventListener('click', () => {
-      wrapper.classList.remove('active-popup');
-    });
-    langDropdown.addEventListener('mouseover', () => {
-    dropdownMenu.style.display = 'block';
-    });
-
-    langDropdown.addEventListener('mouseout', () => {
-    dropdownMenu.style.display = 'none';
-    });
-    
-    window.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.handleScroll);
-  },
-  methods: {
-    handleScroll() {
-      this.isSticky = window.scrollY > 0;
-    },
-    changeLanguage(lang) {
-      this.selectedLang = lang;
-      this.isDropdownVisible = false;
-    },
-    toggleDropdown() {
-      this.isDropdownVisible = !this.isDropdownVisible;
-    },
-    openLoginPopup() {
-      const wrapper = document.querySelector('.wrapper');
-      wrapper.classList.add('active-popup');
-      window.scrollTo({ top: 0, behavior: "smooth"});
-
-      this.isLoginPopupVisible = true;
-
-      document.body.style.overflow = 'hidden';
-    },
-    closeLoginPopup() {
-      const wrapper = document.querySelector('.wrapper');
-      wrapper.classList.remove('active-popup');
-      
-      this.isLoginPopupVisible = false;
-
-      document.body.style.overflow = 'auto';
-    }, 
-    initTyped() {
-      new Typed(".auto-type", {
-        strings: ["Dream, Believe, Achieve", "Embrace the Journey", "Make Yourself Proud", "Strive for Greatness", "Unleash Your Potential", "Inspire, Empower, Succeed", "Find Your Purpose", "Rise, Conquer, Repeat", "Create Your Legacy", "Dream Big, Hustle Hard" ],
-        typeSpeed: 90,
-        backSpeed: 70,
-        smartBackspace: true,
-        backDelay: 2000,
-        loop: true,
-
-      });
-    },  
-    toggleTheDropdown() {
-      // Emits an event to the parent component to toggle the dropdown
-      this.$emit('dropdown');
-    },
-    handleCalorieCalculatorClick() {
-      this.$emit('scrollToCalorieCalculator');
-      this.$emit('dropdown');
-    },
-    showEmojiPage() {
-      this.$emit('scrollToEmojiPage');
-    },
-},
-  };
-</script>
