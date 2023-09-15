@@ -1,14 +1,27 @@
 <template>
-    <div id="contact-form">
+    <div id="contact">
         <div class="Contact-scroll">
             <h2>Feel free to leave any suggestions on how we should improve our website,<br> also let us know what you think of it so far.<br> 
             In the future we are looking forward to adding new features <br>with improving the user experience! </h2>
-            <a href="#" class="contact">CONTACT US</a>
+            <router-link to="/ContactForm" class="contact-link" @click.prevent="showContactForm">CONTACT US</router-link>
         </div>
     </div>
 </template>
 
-<style>
+<script>
+    
+export default {
+    name: 'Contact',
+    methods: {
+        showContactForm() {
+            this.$emit('updateShowContactForm');
+        }
+    }
+};
+
+</script>
+
+<style scoped>
     .Contact-scroll{
         margin: 100px auto;
         width: 80%;
@@ -24,7 +37,7 @@
         margin-bottom: 40px;
         padding: 0;
     }
-    .contact{
+    .contact-link{
         display: inline-block;
         text-decoration: none;
         color: #fff;
@@ -37,7 +50,7 @@
         transition: 1s;
     }
 
-    .contact:hover{
+    .contact-link:hover{
         border: 2px solid #ffffff;
         background: #2461FF;
     }
