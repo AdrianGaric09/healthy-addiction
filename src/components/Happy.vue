@@ -1,14 +1,14 @@
 <template>
     <div id="happy-emoji" >
         <div class="happy">
-            <input type="radio" name="emoji" id="mental">
+            <input type="radio" name="emoji" >
             <label for="mental">
-                <img class="mental" src="../assets/mental.png"> 
+                <img class="mental" src="../assets/mental.png" alt="mental-health"> 
                 <h4 class="m-health">Mental health</h4>
             </label>
-            <input type="radio" name="emoji" id="physical">
+            <input type="radio" name="emoji" >
             <label for="physical">
-                <img class="biceps" src="../assets/biceps.png"> 
+                <img class="biceps" src="../assets/biceps.png" alt="physical-health"> 
                 <h4 class="p-health">Physical health</h4>
             </label>
             <h2 class="tekst">Choose one to perfect.</h2>
@@ -19,11 +19,14 @@
 <script>
 
 export default {
+
     name: 'Happy',
+
 };
 </script>
 
 <style scoped>
+
     #happy-emoji{
         margin: 0;
         padding: 0;

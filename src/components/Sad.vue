@@ -1,15 +1,17 @@
 <template>
     <div id="sad-emoji" >
         <div class="sad">
-            <input type="radio" name="emoji" id="mental">
+            <input type="radio" name="emoji" >
             <label for="mental">
-                <img class="mental" src="../assets/mental.png"> 
+                <img class="mental" src="../assets/mental.png" alt="mental-health"> 
                 <h4 class="m-health">Mental health</h4>
             </label>
-            <input type="radio" name="emoji" id="physical">
+            <input type="radio" name="emoji" >
             <label for="physical">
-                <img class="biceps" src="../assets/biceps.png"> 
-                <h4 class="p-health">Physical health</h4>
+                <img class="biceps" src="../assets/biceps.png" alt="physical-health"> 
+                    <router-link to="/sadPlan" @click="showSadPlan">
+                        <h4 class="p-health">Physical health</h4>
+                    </router-link>
             </label>
             <h2 class="tekst">What do you struggle with the most?</h2>
         </div>
@@ -19,11 +21,20 @@
 <script>
 
 export default {
+
     name: 'Sad',
+
+    methods: {
+        showSadPlan() {
+            this.$emit('scrollToSadPlan');
+        },
+    }
+
 };
 </script>
 
 <style scoped>
+
     #sad-emoji{
         margin: 0;
         padding: 0;
@@ -89,7 +100,7 @@ export default {
     .tekst{
         position: absolute;
         top: -80px;
-        right: 130px;
+        right: 0px;
         color: black;
         width: 500px;
         font-weight: 700;

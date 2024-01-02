@@ -1,7 +1,7 @@
 <template>
     <div class="water-card">
         <span class="icon-close" @click.prevent="closeWaterTracker">
-            <ion-icon name="close" ></ion-icon>
+            <ion-icon name="close" role="img" aria-label="Icon close"></ion-icon>
         </span>
     <h1>{{ $t('wt.water-tracker') }}</h1>
         <div id="water-container">
@@ -44,8 +44,16 @@
 </template>
 
 <script>
+import { IonIcon } from '@ionic/vue';
+
 export default {
+
     name: "WaterTracker",
+
+    components: {
+        IonIcon,
+    },
+
   data() {
     return {
       MAX_CUPS: 10,
@@ -55,6 +63,7 @@ export default {
       percentage: 0,
     };
   },
+
   methods: {
     addCup() {
       this.cups++;
@@ -67,7 +76,7 @@ export default {
       this.percentage = (this.cups / this.MAX_CUPS) * 100;
     },
     closeWaterTracker(){
-        this.$emit('closeWater');
+        this.$emit('closeWaterTracker');
     }
   }
 };
@@ -102,7 +111,7 @@ export default {
         border-top-right-radius: 14px;
         border-bottom-left-radius: 15px;
         cursor: pointer;
-  }
+    }
     #water-container{
         display: grid;
         grid-template-columns: 2fr 3fr 2fr;
@@ -139,7 +148,6 @@ export default {
         margin-top: 5px;
         font-size: 20px;
     }
-
     .percentage-container{
         width: 100%;
         height: 100%;
@@ -155,7 +163,6 @@ export default {
         color: #fff;
         position: relative;
     }
-
     .progress{
         background-color: #2196F3;
         position: absolute;
@@ -171,7 +178,6 @@ export default {
         grid-column: -1/1;
         margin: 10px auto;
     }
-
     button{
         background-color: #2196F3;
         color: #fff;

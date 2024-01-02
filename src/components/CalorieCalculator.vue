@@ -1,103 +1,101 @@
 <template>
-      <div class="dropdown">
-        <div class="card">
-          <span class="icon-close" @click.prevent="closeDropdown">
-            <ion-icon name="close" ></ion-icon>
-          </span>
-          <h1 class="heading">{{ $t('cc.calorie-calculator') }}</h1>
-          <form id="calorie-form" @submit.prevent="calculateCalories">
+  <div id="calorieCalc">
+    <div id="card">
+      <span class="icon-close" @click.prevent="closeCalorieCalculator">
+        <ion-icon name="close" role="img" aria-label="Icon close"></ion-icon>
+      </span>
+      <h1 class="heading">{{ $t('cc.calorie-calculator') }}</h1>
+      <form id="calorie-form" @submit.prevent="calculateCalories">
 
-            <div class="form-group">
-              <label for="age">{{ $t('cc.age') }}:</label>
-              <input type="number" required class="form-control" id="age" :placeholder="$t('cc.enter-age')" v-model="age">
-              <div class="error-message" v-show="ageError">{{ ageErrorMessage }}</div>
+        <div class="form-group">
+          <label for="age">{{ $t('cc.age') }}:</label>
+          <input type="number" required class="form-control" id="age" :placeholder="$t('cc.enter-age')" v-model="age" :min="15" :max="80">
+          <div class="error-message" v-show="ageError">{{ ageErrorMessage }}</div>
+        </div>
+
+        <div class="form-group">
+          <label>{{ $t('cc.gender') }}:</label>
+          <div class="gender-options">
+            <div class="custom-control custom-radio">
+              <input type="radio" id="male" name="gender" class="custom-control-input" v-model="gender" value="male">
+              <label class="custom-control-label" for="male">{{ $t('cc.male') }}</label>
             </div>
-
-            <div class="form-group">
-              <label>GENDER:</label>
-              <div class="gender-options">
-                <div class="custom-control custom-radio">
-                  <input type="radio" id="male" name="gender" class="custom-control-input" checked="checked" v-model="gender">
-                  <label class="custom-control-label" for="male">MALE</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input type="radio" id="female" name="gender" class="custom-control-input" v-model="gender">
-                  <label class="custom-control-label" for="female">FEMALE</label>
-                </div>
-              </div>  
-            </div> 
-
-            <div class="form-group">
-              <label for="weight">WEIGHT (KG):</label>
-              <input type="number" required class="form-control" id="weight" placeholder="Enter your weight in kilograms" v-model="weight" :min="10" :max="650" @input="validateWeight">
-              <div class="error-message" v-show="weightError">{{ weightErrorMessage }}</div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="female" name="gender" class="custom-control-input" v-model="gender" value="female">
+              <label class="custom-control-label" for="female">{{ $t('cc.female') }}</label>
             </div>
+          </div>  
+        </div> 
 
-            <div class="form-group">
-              <label for="height">HEIGHT (CM):</label>
-              <input type="number" required class="form-control" id="height" placeholder="Enter your height in centimeters" v-model="height" :min="50" :max="250" @input="validateHeight">
-              <div class="error-message" v-show="heightError">{{ heightErrorMessage }}
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="activity-level">ACTIVITY LEVEL:</label>
-              <select class="custom-select" id="activity-level" v-model="activityLevel">
-                <option value="1">Sedentary (little or no exercise)</option>
-                <option value="2">Lightly active (exercise/sports 1-3 days/week)</option>
-                <option value="3">Moderately active (exercise/sports 3-5 days/week)</option>
-                <option value="4">Very active (hard exercise/sports 6-7 days a week)</option>
-                <option value="5">Extra active (very hard exercise/sports & physical job or 2x training)</option>
-              </select>
-            </div>
+        <div class="form-group">
+          <label for="weight">{{ $t('cc.weight') }} (KG):</label>
+          <input type="number" required class="form-control" id="weight" :placeholder="$t('cc.enter-weight')" v-model="weight" :min="30" :max="350" @input="validateWeight">
+          <div class="error-message" v-show="weightError">{{ weightErrorMessage }}</div>
+        </div>
 
-            <div class="form-group">
-              <input type="submit" value="CALCULATE" class="btn btn-primary btn-block" :disabled="isLoading">
-            </div>
-
-          </form>
-
-          <div id="results" v-show="showResults" >
-            <h3>TOTAL CALORIES:</h3>
-            <div class="form-group">
-              <input type="number" id="total-calories" v-model="caloriesResult" disabled>
-            </div>                       
-          </div>
-
-          <div id="loading" v-if="isLoading">
-            <img src="../assets/Loading.gif" alt="Loading...">
+        <div class="form-group">
+          <label for="height">{{ $t('cc.height') }} (CM):</label>
+          <input type="number" required class="form-control" id="height" :placeholder="$t('cc.enter-height')" v-model="height" :min="90" :max="250" @input="validateHeight">
+          <div class="error-message" v-show="heightError">{{ heightErrorMessage }}
           </div>
         </div>
-     </div>
+        
+        <div class="form-group">
+          <label for="activity-level">{{ $t('cc.activity') }}:</label>
+          <select class="custom-select" id="activity-level" v-model="activityLevel">
+            <option value="1">{{ $t('cc.activity-p1') }}</option>
+            <option value="2">{{ $t('cc.activity-p2') }}</option>
+            <option value="3">{{ $t('cc.activity-p3') }}</option>
+            <option value="4">{{ $t('cc.activity-p4') }}</option>
+            <option value="5">{{ $t('cc.activity-p5') }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" :value="$t('cc.calculate')" class="btn btn-primary btn-block" :disabled="isLoading">
+        </div>
+
+      </form>
+
+      <div id="results" v-show="showResults" >
+        <h3>{{ $t('cc.total') }}:</h3>
+        <div class="form-group">
+          <input type="number" id="total-calories" v-model="caloriesResult" disabled>
+        </div>                       
+      </div>
+
+      <div id="loading" v-if="isLoading" class="custom-loading">
+        <img src="../assets/Loading.gif" alt="Loading...">
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-  .dropdown {
+
+  #calorieCalc {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 100vh;
-    min-width: 100vw; 
+    min-height: 90vh;
+    min-width: 90vw; 
     box-sizing: border-box;
     z-index: 1;
   }
-
-  .card {
+  #card {
     border: 1px solid #969696;
     border-radius: 15px;
     box-shadow: 0 6px 10px rgb(177, 177, 177);
     width: 100%;
     max-width: 500px;
-    padding: 10px;
     background-color: #ffffff;
   }
-
-  .card .icon-close {
+  #card .icon-close {
     position: relative;
-    bottom: 10px;
-    left: 465px;
+    bottom: 0px;
+    left: 455px;
     width: 45px ;
     height: 45px ;
     background: #d9e0e0;
@@ -110,42 +108,61 @@
     border-bottom-left-radius: 15px;
     cursor: pointer;
   }
-
+  form{
+    padding: 15px;
+  }
   .heading {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold ;
     text-align: center;
-    padding-bottom: 30px;
   }
-
   .form-group {
-    margin-bottom: 15px;
-    padding: 3px;
-    font-size: 15px;
+    margin-bottom: 13px;
+    padding: 0.1px;
+    font-size: 13px;
   }
-
   label {
     font-weight: bold;
   }
-
+  input{
+    margin: 10px;
+    font-size: 12px;
+    padding: 0px;
+  }
+  .custom-control-label {
+    position: relative;
+    padding-left: 10px; 
+    cursor: pointer;
+  }
+  .custom-control-label:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: -30px;
+    width: 15px; 
+    height: 15px; 
+    border: 1px solid #000000;
+    border-radius: 50%;
+  }
+  .custom-control-input:checked ~ .custom-control-label:before {
+    border: 2px solid #00ff51; 
+  }
   .form-control {
-    width: 45%;
+    width: 75%;
     padding: 10px;
     margin-left: 20px;
     border: 2px solid #00ff51;
     border-radius: 15px;
+    color: rgba(0, 0, 0, 0.652);
   }
-
   .gender-options {
     display: flex;
     justify-content: space-evenly;
-    padding-top: 20px;
-}
-  
+    margin-bottom: 10px;
+  }
   .custom-radio .custom-control-label {
     padding-left: 5px;
   }
-
   .btn-primary {
     display: block;
     width: 80%;
@@ -158,27 +175,37 @@
     cursor: pointer;
     margin: 0 auto;
   }
-
   #loading {
-    display: block;
+    display: flex;
     text-align: center;
-    margin-top: 20px;
+    justify-content: center;
   }
-
+  .custom-loading {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: -20px; 
+  }
   #loading img {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
   }
-
   #results {
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
   }
-
   #total-calories {
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #ccc;
+    width: 80%;
+    border: 1px solid #000000;
     border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+  }
+  h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
   }
   .custom-select {
     width: 100%;
@@ -186,140 +213,146 @@
     border: 1px solid #c0c0c0;
     border-radius: 4px;
     appearance: none;
-  }
-  .custom-select option {
-      padding: 10px;
+    font-size: 12px;
   }
   .error-message {
     color: red;
-    font-size: 15px;
+    font-size: 14px;
     margin-top: 5px;
-    padding-left: 45px;
+    padding-left: 15px;
   }
 
 </style>
 
-
 <script>
-export default {
-  name: "CalorieCalculator",
-  data() {
-    return {
-      showTheDropdown: false,
-      showCalorieCalculator: true,
-      isLoading: false,
-      showResults: false,
-      caloriesResult: null,
-      ageError: false,
-      ageErrorMessage: "",
-      age: null,
-      gender: "male",
-      weight: null,
-      weightError: false,
-      weightErrorMessage: "",
-      height: null,
-      heightError: false,
-      heightErrorMessage: "",
-      activityLevel: "1",
-    };
-  },
-  methods: {
-    closeDropdown() {
-      this.$emit('close');
+
+  import { IonIcon } from '@ionic/vue';
+
+  export default {
+
+    name: "calorieCalculator",
+
+    components: {
+        IonIcon, 
     },
 
-    calculateCalories(event) {
-      event.preventDefault();
-
-      const age = parseFloat(this.age);
-      const gender = this.gender;
-      const weight = parseFloat(this.weight);
-      const height = parseFloat(this.height);
-      const activity = parseInt(this.activityLevel);
-      //const totalCalories = document.getElementById("total-calories");
-      
-
-      if (isNaN(age) || isNaN(weight) || isNaN(height) || age < 15 || age > 80) {
-        this.ageError = true;
-        this.ageErrorMessage = "Please enter the age between 15 and 80 !";
-        return;
-      } else {
-        this.ageError = false;
-        this.ageErrorMessage = "";
-      }
-
-      this.isLoading = true;
-      this.showResults = false;
-
-      setTimeout(() => {
-        let activityMultiplier = 1.2; // Default multiplier for male
-
-        if (gender === "female") {
-          activityMultiplier = 1.375; // Default multiplier for female
-        }
-
-        if (activity === 1) {
-          activityMultiplier *= 1.2;
-        } else if (activity === 2) {
-          activityMultiplier *= 1.375;
-        } else if (activity === 3) {
-          activityMultiplier *= 1.55;
-        } else if (activity === 4) {
-          activityMultiplier *= 1.725;
-        } else {
-          activityMultiplier *= 1.9;
-        }
-
-        if (gender === "male") {
-          this.caloriesResult = Math.ceil(
-            activityMultiplier * (66.5 + 13.75 * weight + 5.003 * height - 6.755 * age)
-          );
-        } else {
-          this.caloriesResult = Math.ceil(
-            activityMultiplier * (655 + 9.563 * weight + 1.85 * height - 4.676 * age)
-          );
-        }
-
-        this.isLoading = false;
-        this.showResults = true;
-      }, 2000);
+    data() {
+      return {
+        showTheDropdown: false,
+        showCalorieCalculator: true,
+        isLoading: false,
+        showResults: false,
+        caloriesResult: null,
+        ageError: false,
+        ageErrorMessage: "",
+        age: null,
+        gender: "male",
+        weight: null,
+        weightError: false,
+        weightErrorMessage: "",
+        height: null,
+        heightError: false,
+        heightErrorMessage: "",
+        activityLevel: "1",
+      };
     },
-    validateWeight() {
-      const weight = parseFloat(this.weight);
-      if (isNaN(weight) || weight < 10 || weight > 650) {
-        this.weightError = true;
-        this.weightErrorMessage = "Please enter the weight between 10 and 650 kilograms!";
-      } else {
+    
+    methods: {
+      closeCalorieCalculator() {
+        this.$emit('closeCalorieCalculator');
+      },
+
+      calculateCalories(event) {
+        event.preventDefault();
+
+        const age = parseFloat(this.age);
+        const gender = this.gender;
+        const weight = parseFloat(this.weight);
+        const height = parseFloat(this.height);
+        const activity = parseInt(this.activityLevel);
+        
+
+        if (isNaN(age) || isNaN(weight) || isNaN(height) || age < 15 || age > 80) {
+          this.ageError = true;
+          this.ageErrorMessage = this.$t('cc.ageErrorMessage');
+          return;
+        } else {
+          this.ageError = false;
+          this.ageErrorMessage = "";
+        }
+
+        this.isLoading = true;
+        this.showResults = false;
+
+        setTimeout(() => {
+          let activityMultiplier = 1.2; 
+
+          if (gender === "female") {
+            activityMultiplier = 1.375; 
+          }
+
+          if (activity === 1) {
+            activityMultiplier *= 1.2;
+          } else if (activity === 2) {
+            activityMultiplier *= 1.375;
+          } else if (activity === 3) {
+            activityMultiplier *= 1.55;
+          } else if (activity === 4) {
+            activityMultiplier *= 1.725;
+          } else {
+            activityMultiplier *= 1.9;
+          }
+
+          if (gender === "male") {
+            this.caloriesResult = Math.ceil(
+              activityMultiplier * (66.48 + 13.75 * weight + 5.003 * height - 6.756 * age)
+            );
+          } else {
+            this.caloriesResult = Math.ceil(
+              activityMultiplier * (655.1 + 9.563 * weight + 1.85 * height - 4.676 * age)
+            );
+          }
+
+          this.isLoading = false;
+          this.showResults = true;
+        }, 2000);
+      },
+      validateWeight() {
+        const weight = parseFloat(this.weight);
+        if (isNaN(weight) || weight < 30 || weight > 350) {
+          this.weightError = true;
+          this.weightErrorMessage = this.$t('cc.weightErrorMessage');
+        } else {
+          this.weightError = false;
+          this.weightErrorMessage = "";
+        }
+      },
+      validateHeight() {
+        const height = parseFloat(this.height);
+        if (isNaN(height) || height < 90 || height > 250) {
+          this.heightError = true;
+          this.heightErrorMessage = this.$t('cc.heightErrorMessage');
+        } else {
+          this.heightError = false;
+          this.heightErrorMessage = "";
+        }
+      },
+      resetForm() {
+        this.age = null;
+        this.gender = "male";
+        this.weight = null;
         this.weightError = false;
         this.weightErrorMessage = "";
-      }
-    },
-    validateHeight() {
-      const height = parseFloat(this.height);
-      if (isNaN(height) || height < 50 || height > 250) {
-        this.heightError = true;
-        this.heightErrorMessage = "Please enter the height between 50 and 250 centimeters!";
-      } else {
+        this.height = null;
         this.heightError = false;
         this.heightErrorMessage = "";
-      }
+        this.activityLevel = "1";
+        this.ageError = false;
+        this.ageErrorMessage = "";
+        this.showResults = false;
+      },
     },
-    resetForm() {
-      this.age = null;
-      this.gender = "male";
-      this.weight = null;
-      this.weightError = false;
-      this.weightErrorMessage = "";
-      this.height = null;
-      this.heightError = false;
-      this.heightErrorMessage = "";
-      this.activityLevel = "1";
-      this.ageError = false;
-      this.ageErrorMessage = "";
-      this.showResults = false;
-    },
-  },
-};
+  };
 </script>
 
 

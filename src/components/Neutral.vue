@@ -1,17 +1,17 @@
 <template>
     <div id="neutral-emoji" >
         <div class="neutral">
-            <input type="radio" name="emoji" id="mental">
+            <input type="radio" name="emoji" >
             <label for="mental">
-                <img class="mental" src="../assets/mental.png"> 
+                <img class="mental" src="../assets/mental.png" alt="mental-health"> 
                 <h4 class="m-health">Mental health</h4>
             </label>
-            <input type="radio" name="emoji" id="physical">
+            <input type="radio" name="emoji" >
             <label for="physical">
-                <img class="biceps" src="../assets/biceps.png"> 
+                <img class="biceps" src="../assets/biceps.png" alt="physical-health"> 
                 <h4 class="p-health">Physical health</h4>
             </label>
-            <h2 class="tekst">What would you like to improve the most?</h2>
+            <h2 class="tekst">Which one would you like to improve more?</h2>
         </div>
     </div>
 </template>
@@ -19,11 +19,14 @@
 <script>
 
 export default {
+
     name: 'Neutral',
+
 };
 </script>
 
 <style scoped>
+
     #neutral-emoji{
         margin: 0;
         padding: 0;
@@ -89,7 +92,7 @@ export default {
     .tekst{
         position: absolute;
         top: -80px;
-        right: 180px;
+        right: 0px;
         color: black;
         width: 500px;
         font-weight: 700;

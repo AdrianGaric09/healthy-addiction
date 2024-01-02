@@ -2,23 +2,23 @@
 <template>
     <div id="emoji-page">
         <div class="rating">
-            <input type="radio" name="emoji" id="sad">
+            <input type="radio" name="emoji" >
             <label for="sad">
-                <img class="t" src="../assets/sad.png">
+                <img class="t" src="../assets/sad.png" alt="sad-emoji">
                     <router-link to="/Sad" @click="showSad" class="underline">
                         <h4 class="tuzno">Sad</h4>
                     </router-link>
             </label>
-            <input type="radio" name="emoji" id="neutral">
+            <input type="radio" name="emoji" >
             <label for="neutral">
-                <img class="n" src="../assets/neutral.png"> 
+                <img class="n" src="../assets/neutral.png" alt="neutral-emoji"> 
                     <router-link to="/Neutral" @click="showNeutral" class="underline">
                         <h4 class="neutralno">Neutral</h4>
                     </router-link>
             </label>
-            <input type="radio" name="emoji" id="happy">
+            <input type="radio" name="emoji" >
             <label for="happy">
-                <img class="s" src="../assets/happy.png">
+                <img class="s" src="../assets/happy.png" alt="happy-emoji">
                     <router-link to="/Happy" @click="showHappy" class="underline">
                         <h4 class="sretno">Happy</h4>
                     </router-link>
@@ -30,9 +30,10 @@
 
 <script>
 
-
 export default {
+
     name: 'EmojiPage',
+
     methods: {
         showSad() {
             this.$emit('scrollToSad');
@@ -129,6 +130,7 @@ export default {
     .tekst{
         position: absolute;
         top: -80px;
+        left: 100px;
         color: black;
         width: 500px;
         font-weight: 700;
