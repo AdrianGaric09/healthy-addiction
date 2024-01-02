@@ -1,51 +1,101 @@
 {
-    "header": {
-        "home": "HOME",
-        "about": "ABOUT",
-        "calorie-calculator": "CALORIE CALCULATOR",
-        "water-tracker": "WATER TRACKER",
-        "contact": "CONTACT",
-        "login": "LOGIN",
-        "click-for": "CLICK FOR",
-        "success": "SUCCESS",
-        "string1": "Dream, Believe, Achieve",
-        "string2": "Embrace the Journey",
-        "string3": "Make Yourself Proud",
-        "string4": "Strive for Greatness",
-        "string5": "Unleash Your Potential", 
-        "string6": "Inspire, Empower, Succeed",
-        "string7": "Find Your Purpose",
-        "string8": "Rise, Conquer, Repeat", 
-        "string9": "Create Your Legacy",
-        "string10": "Dream Big, Hustle Hard"
-      },
-      "wt": {
-        "water-tracker": "WATER TRACKER"
-      },
-      "cc": {
-        "calorie-calculator": "CALORIE CALCULATOR",
-        "age": "AGE",
-        "enter-age": "Enter your age (15-80)"
-      },
-      "motivation": {
-        "believe": "YOU MUST BELIEVE IN YOURSELF",
-        "remember": "Remember, if anyone can do it, so can you",
-        "determination": "Determination",
-        "optimism": "Optimism",
-        "self-discipline": "Self-discipline",
-        "leonardo-p1": "It had long since come to my attention that people of accomplishment rarely sat back and let things happen to them.",
-        "leonardo-p2": "They went out and happened to things.",
-        "einstein-p1": "There are only two ways to live your life.",
-        "einstein-p2": "One is as though nothing is a miracle.",
-        "einstein-p3": "The other is as though everything is a miracle.",
-        "tesla-p1": "I could only achieve success in my life through self-discipline ",
-        "tesla-p2": "and I applied it until my wish and my will became one. "
-      },
-      "lifestyle": {
-        "improve": "IMPROVE YOUR LIFESTYLE",
-        "support": "We are here to support your way into building a better version of you",
-        "food": "HEALTHY DIET",
-        "training": "TRAINING",
-        "end": "END GOAL"
-      }
+  "header": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "calorie-calculator": "CALORIE CALCULATOR",
+    "water-tracker": "WATER TRACKER",
+    "contact": "CONTACT",
+    "logout": "LOGOUT",
+    "click-for": "CLICK FOR",
+    "success": "SUCCESS",
+    "string1": "Dream, Believe, Achieve",
+    "string2": "Embrace the Journey",
+    "string3": "Make Yourself Proud",
+    "string4": "Strive for Greatness",
+    "string5": "Unleash Your Potential", 
+    "string6": "Inspire, Empower, Succeed",
+    "string7": "Find Your Purpose",
+    "string8": "Rise, Conquer, Repeat", 
+    "string9": "Create Your Legacy",
+    "string10": "Dream Big, Hustle Hard"
+  },
+  "wt": {
+    "water-tracker": "WATER TRACKER"
+  },
+  "cc": {
+    "calorie-calculator": "CALORIE CALCULATOR",
+    "age": "AGE",
+    "enter-age": "Enter your age (15-80)",
+    "enter-weight": "Enter your weight in kg (30-350)",
+    "enter-height": "Enter your height in cm (90-250)",
+    "gender": "GENDER",
+    "male": "MALE",
+    "female": "FEMALE",
+    "ageErrorMessage": "Please enter the age between 15 and 80 !",
+    "weightErrorMessage": "Please enter the weight between 30 and 350 kilograms!",
+    "heightErrorMessage": "Please enter the height between 90 and 250 centimeters!",
+    "calculate": "CALCULATE",
+    "weight": "WEIGHT",
+    "height": "HEIGHT",
+    "activity": "ACTIVITY LEVEL",
+    "activity-p1": "Sedentary (little or no exercise)",
+    "activity-p2": "Lightly active (exercise/sports 1-3 days/week)",
+    "activity-p3": "Moderately active (exercise/sports 3-5 days/week)",
+    "activity-p4": "Very active (hard exercise/sports 6-7 days a week)",
+    "activity-p5": "Extra active (very hard exercise/sports & physical job or 2x training)",
+    "total": "TOTAL CALORIES"
+  },
+  "motivation": {
+    "believe": "YOU MUST BELIEVE IN YOURSELF",
+    "remember": "Remember, if anyone can do it, so can you",
+    "determination": "Determination",
+    "optimism": "Optimism",
+    "self-discipline": "Self-discipline",
+    "leonardo-p1": "It had long since come to my attention that people of accomplishment rarely sat back and let things happen to them.",
+    "leonardo-p2": "They went out and happened to things.",
+    "einstein-p1": "There are only two ways to live your life.",
+    "einstein-p2": "One is as though nothing is a miracle.",
+    "einstein-p3": "The other is as though everything is a miracle.",
+    "tesla-p1": "I could only achieve success in my life through self-discipline ",
+    "tesla-p2": "and I applied it until my wish and my will became one. "
+  },
+  "lifestyle": {
+    "improve": "IMPROVE YOUR LIFESTYLE",
+    "support": "We are here to support your way into building a better version of you",
+    "food": "HEALTHY DIET",
+    "training": "TRAINING",
+    "end": "END GOAL"
+  },
+  "faq": {
+    "answer": "WE ARE HERE TO ANSWER",
+    "questions": "THE IMPORTANT QUESTIONS",
+    "doubt": "When in doubt, observe and ask questions.",
+    "certain": "When certain, observe at length and ask many more questions.",
+    "eat": "Which diet do I follow?",
+    "train": "What should I train?",
+    "succeed": "How will I succeed?",
+    "find-out": "FIND OUT FOR YOURSELF",
+    "click": "CLICK",
+    "here": "HERE"
+  },
+  "contact": {
+    "contact-p1": "Feel free to leave any suggestions on how we should improve our website,",
+    "contact-p2": "also let us know what you think of it so far.",
+    "contact-p3": "In the future we are looking forward to adding new features",
+    "contact-p4": "with improving the user experience!",
+    "contact-us": "CONTACT US"
+  },
+  "footer": {
+    "about": "About Us",
+    "org": "We are a nonprofit organization that has a goal to show",
+    "mindset": "how anyone can unlock their true potential with the right mindset",
+    "thanks": "Thanks for visiting us!"
+  },
+  "cf": {
+    "name": "Full name",
+    "email": "E-mail",
+    "message": "Message",
+    "submit": "Submit",
+    "thanks": "Thank you for submitting the form!"
+  }
 }

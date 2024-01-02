@@ -1,51 +1,101 @@
 {
-    "header": {
-        "home": "POČETNA",
-        "about": "O NAMA",
-        "calorie-calculator": "KALKULATOR KALORIJA",
-        "water-tracker": "UNOS TEKUĆINE",
-        "contact": "KONTAKT",
-        "login": "LOGIN",
-        "click-for": "KLIKNI ZA",
-        "success": "USPJEH",
-        "string1": "Sanjaj, Vjeruj, Ostvari",
-        "string2": "Prigrli Putovanje",
-        "string3": "Učini Sebe Ponosnim",
-        "string4": "Teži Veličini",
-        "string5": "Oslobodi svoj potencijal",
-        "string6": "Inspiriraj, Ojačaj, Uspij",
-        "string7": "Pronađi Svoju Svrhu",
-        "string8": "Izdigni Se, Osvoji, Ponovi",
-        "string9": "Stvori Svoju Ostavštinu",
-        "string10": "Sanjaj Veliko, Radi Naporno"
-      },
-      "wt": {
-        "water-tracker":"UNOS TEKUĆINE"
-      },
-      "cc": {
-        "calorie-calculator":"KALKULATOR KALORIJA",
-        "age":"DOB",
-        "enter-age":"Unesite svoje godine (15-80)"
-      },
-      "motivation": {
-        "believe":"MORAŠ VJEROVATI U SEBE",
-        "remember":"Zapamti, ako bilo tko to može, možeš to i ti",
-        "determination":"Odlučnost",
-        "optimism":"Optimizam",
-        "self-discipline": "Samodisciplina",
-        "leonardo-p1": "Odavno sam primijetio da uspješni ljudi rijetko sjede i dopuštaju da im se stvari dogode.",
-        "leonardo-p2": "Oni su izašli i dogodili se stvarima.",
-        "einstein-p1": "Postoje samo dva načina da živite svoj život.",
-        "einstein-p2": "Jedan je kao da ništa nije čudo.",
-        "einstein-p3": "Drugi je kao da sve je čudo.",
-        "tesla-p1": "Uspjeh u životu mogao sam postići samo samodisciplinom ",
-        "tesla-p2": "i primjenjivao sam je sve dok se moja želja i volja nisu spojile. "
-      },
-      "lifestyle": {
-        "improve": "POBOLJŠAJ SVOJ NAČIN ŽIVOTA",
-        "support": "Ovdje smo da podržimo tvoj put u izgradnji bolje verzije tebe",
-        "food": "ZDRAVA PREHRANA",
-        "training": "TRENING",
-        "end": "KRAJNJI CILJ"
-      }
+  "header": {
+    "home": "POČETNA",
+    "about": "O NAMA",
+    "calorie-calculator": "KALKULATOR KALORIJA",
+    "water-tracker": "UNOS TEKUĆINE",
+    "contact": "KONTAKT",
+    "logout": "LOGOUT",
+    "click-for": "KLIKNI ZA",
+    "success": "USPJEH",
+    "string1": "Sanjaj, Vjeruj, Ostvari",
+    "string2": "Prigrli Putovanje",
+    "string3": "Učini Sebe Ponosnim",
+    "string4": "Teži Veličini",
+    "string5": "Oslobodi svoj potencijal",
+    "string6": "Inspiriraj, Ojačaj, Uspij",
+    "string7": "Pronađi Svoju Svrhu",
+    "string8": "Izdigni Se, Osvoji, Ponovi",
+    "string9": "Stvori Svoju Ostavštinu",
+    "string10": "Sanjaj Veliko, Radi Naporno"
+  },
+  "wt": {
+    "water-tracker":"UNOS TEKUĆINE"
+  },
+  "cc": {
+    "calorie-calculator":"KALKULATOR KALORIJA",
+    "age":"DOB",
+    "enter-age":"Unesi svoje godine (15-80)",
+    "enter-weight": "Unesi svoju težinu u kg (30-350)",
+    "enter-height": "Unesi svoju visinu u cm (90-250)",
+    "gender": "SPOL",
+    "male": "MUŠKO",
+    "female": "ŽENSKO",
+    "ageErrorMessage": "Molimo unesi dob između 15 i 80 godina!",
+    "weightErrorMessage": "Molimo unesi težinu između 30 i 350 kilograma!",
+    "heightErrorMessage": "Molimo unesi visinu između 90 i 250 centimetara!",
+    "calculate": "IZRAČUNAJ",
+    "weight": "TEŽINA",
+    "height": "VISINA",
+    "activity": "RAZINA AKTIVNOSTI",
+    "activity-p1": "Neaktivan (malo ili nimalo tjelovježbe)",
+    "activity-p2": "Lagano aktivan (tjelovježba/sport 1-3 dana tjedno)",
+    "activity-p3": "Umjereno aktivan (tjelovježba/sport 3-5 dana tjedno)",
+    "activity-p4": "Vrlo aktivan (teško vježbanje/bavljenje sportom 6-7 dana u tjednu)",
+    "activity-p5": "Izuzetno aktivan (vrlo teška tjelovježba/sport i fizički posao ili 2x trening)",
+    "total": "UKUPNO KALORIJA"
+  },
+  "motivation": {
+    "believe":"MORAŠ VJEROVATI U SEBE",
+    "remember":"Zapamti, ako bilo tko to može, možeš to i ti",
+    "determination":"Odlučnost",
+    "optimism":"Optimizam",
+    "self-discipline": "Samodisciplina",
+    "leonardo-p1": "Odavno sam primijetio da uspješni ljudi rijetko sjede i dopuštaju da im se stvari dogode.",
+    "leonardo-p2": "Oni su izašli i dogodili se stvarima.",
+    "einstein-p1": "Postoje samo dva načina da živite svoj život.",
+    "einstein-p2": "Jedan je kao da ništa nije čudo.",
+    "einstein-p3": "Drugi je kao da sve je čudo.",
+    "tesla-p1": "Uspjeh u životu mogao sam postići samo samodisciplinom ",
+    "tesla-p2": "i primjenjivao sam je sve dok se moja želja i volja nisu spojile. "
+  },
+  "lifestyle": {
+    "improve": "POBOLJŠAJ SVOJ NAČIN ŽIVOTA",
+    "support": "Ovdje smo da podržimo tvoj put u izgradnji bolje verzije tebe",
+    "food": "ZDRAVA PREHRANA",
+    "training": "TRENING",
+    "end": "KRAJNJI CILJ"
+  },
+  "faq": {
+    "answer": "OVDJE SMO DA ODGOVORIMO",
+    "questions": "NA VAŽNA PITANJA",
+    "doubt": "Kada si u nedoumici, promatraj i postavljaj pitanja.",
+    "certain": "Kada si siguran, dugo promatraj i postavljaj još mnogo pitanja.",
+    "eat": "Koju dijetu da pratim?",
+    "train": "Što da treniram?",
+    "succeed": "Kako ću uspjeti?",
+    "find-out": "SAZNAJ ZA SEBE",
+    "click": "KLIKNI",
+    "here": "OVDJE"
+  },
+  "contact": {
+    "contact-p1": "Slobodno ostavi bilo kakve prijedloge o tome kako bismo trebali poboljšati našu web stranicu,",
+    "contact-p2": "također nam reci što misliš o njoj do sada.",
+    "contact-p3": "U budućnosti se radujemo dodavanju novih značajki",
+    "contact-p4": "s poboljšanjem korisničkog iskustva!",
+    "contact-us": "KONTAKTIRAJ NAS"
+  },
+  "footer": {
+    "about": "O nama",
+    "org": "Mi smo neprofitna organizacija koja ima cilj pokazati",
+    "mindset": "kako svatko može otključati svoj pravi potencijal s ispravnim načinom razmišljanja",
+    "thanks": "Hvala ti na posjeti!"
+  },
+  "cf": {
+    "name": "Puno ime",
+    "email": "E-mail",
+    "message": "Poruka",
+    "submit": "Podnesi",
+    "thanks": "Hvala ti na slanju obrasca!"
+  }
 }
